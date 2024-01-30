@@ -1,62 +1,10 @@
 import { useState } from 'react';
 import { Dropdown, DropdownChangeEvent } from 'primereact/dropdown';
 import { RadioButton } from 'primereact/radiobutton';
-
-interface Date {
-  name: string;
-  code: string;
-}
-
-const months: Date[] = [
-  { name: '1', code: '1' },
-  { name: '2', code: '2' },
-  { name: '3', code: '3' },
-  { name: '4', code: '4' },
-  { name: '5', code: '5' },
-  { name: '6', code: '6' },
-  { name: '7', code: '7' },
-  { name: '8', code: '8' },
-  { name: '9', code: '9' },
-  { name: '10', code: '10' },
-  { name: '11', code: '11' },
-  { name: '12', code: '12' },
-];
-
-const dates: Date[] = [
-  { name: '1', code: '1' },
-  { name: '2', code: '2' },
-  { name: '3', code: '3' },
-  { name: '4', code: '4' },
-  { name: '5', code: '5' },
-  { name: '6', code: '6' },
-  { name: '7', code: '7' },
-  { name: '8', code: '8' },
-  { name: '9', code: '9' },
-  { name: '10', code: '10' },
-  { name: '11', code: '11' },
-  { name: '12', code: '12' },
-  { name: '13', code: '13' },
-  { name: '14', code: '14' },
-  { name: '15', code: '15' },
-  { name: '16', code: '16' },
-  { name: '17', code: '17' },
-  { name: '18', code: '18' },
-  { name: '19', code: '19' },
-  { name: '20', code: '20' },
-  { name: '21', code: '21' },
-  { name: '22', code: '22' },
-  { name: '23', code: '23' },
-  { name: '24', code: '24' },
-  { name: '25', code: '25' },
-  { name: '26', code: '26' },
-  { name: '27', code: '27' },
-  { name: '28', code: '28' },
-  { name: '29', code: '29' },
-  { name: '30', code: '30' },
-  { name: '31', code: '31' },
-];
+import { years, months, dates } from './data/dropdownOptoion';
 
 function Form() {
+  const [selectedYear, setSelectedYear] = useState<Date | null>(null);
   const [selectedMonth, setSelectedMonth] = useState<Date | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
   const [gender, setGender] = useState<string>('');
@@ -65,8 +13,9 @@ function Form() {
     <div style={{ marginBlock: '5rem' }}>
       <div
         style={{
-          display: 'flex',
+          display: 'grid',
           alignItems: 'center',
+          gridTemplateColumns: '6rem 1fr',
           marginBottom: '2.25rem',
         }}
       >
@@ -78,12 +27,18 @@ function Form() {
           }}
         >
           <Dropdown
+            value={selectedYear}
+            onChange={(e: DropdownChangeEvent) => setSelectedYear(e.value)}
+            options={years}
+            optionLabel='name'
+            placeholder='年'
+          />
+          <Dropdown
             value={selectedMonth}
             onChange={(e: DropdownChangeEvent) => setSelectedMonth(e.value)}
             options={months}
             optionLabel='name'
             placeholder='月'
-            className='w-full md:w-14rem'
           />
           <Dropdown
             value={selectedDate}
@@ -91,23 +46,15 @@ function Form() {
             options={dates}
             optionLabel='name'
             placeholder='日'
-            className='w-full md:w-14rem'
-          />
-          <Dropdown
-            value={selectedDate}
-            onChange={(e: DropdownChangeEvent) => setSelectedDate(e.value)}
-            options={dates}
-            optionLabel='name'
-            placeholder='日'
-            className='w-full md:w-14rem'
           />
         </div>
       </div>
 
       <div
         style={{
-          display: 'flex',
+          display: 'grid',
           alignItems: 'center',
+          gridTemplateColumns: '6rem 1fr',
           marginBottom: '2.25rem',
         }}
       >
@@ -134,8 +81,9 @@ function Form() {
 
       <div
         style={{
-          display: 'flex',
+          display: 'grid',
           alignItems: 'center',
+          gridTemplateColumns: '6rem 1fr',
         }}
       >
         <div>性別</div>

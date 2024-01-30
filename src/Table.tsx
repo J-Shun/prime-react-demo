@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -16,7 +15,7 @@ function KeywordTags({ tags }: { tags: string[] }) {
         <div
           style={{
             color: '#fff',
-            backgroundColor: '#fa0',
+            backgroundColor: 'var(--primary-500)',
             padding: '0.5rem 1rem',
             borderRadius: '0.5rem',
           }}
